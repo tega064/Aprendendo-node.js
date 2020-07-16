@@ -59,3 +59,25 @@ email varchar(50),
 idade int
 );
 para ver a estrutura da tabela escreva no comando: ("DESCRIBE (nome da tabela)")
+o select mostra dados da tabela;
+o delete deleta dados da tabela;
+o where especifica o que vc quer que seja alterado;
+update junto com o set atualiza dados da tabela juno com o where;
+exemplo:
+select * from usuario where nome= "mateus" (procure na tabela usuario todos os campos onde o nome é mateus).
+
+****sequelize***
+abre o terminal em seu diretório e execute o comando: npm install --save sequelize
+em seguida digite o comando npm install --save mysql2
+**no editor de códigos digite**
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize('test', 'root','',{  /*conectando ao banco*/
+    host: "localhost", /* onde é o banco? No meu caso é no meu pc/local */
+    dialect: 'mysql'    /* É necessário dizer qual banco pois sequelize utiliza vários*/
+})
+
+sequelize.authenticate().then(function(){//call back para dizer que está tudo certo com a conexão com o banco de dados
+    console.log("Conectado com sucesso!")
+}).catch(function(erro){//call back para dizer que houve erro em se conectar ao banco de dados.
+    console.log("Falha ao se conectar:" + erro)
+})
